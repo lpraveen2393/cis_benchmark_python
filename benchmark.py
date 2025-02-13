@@ -1,4 +1,6 @@
 import psycopg2
+import os
+from dotenv import load_dotenv
 from reportlab.lib import colors
 from reportlab.lib.pagesizes import letter
 from reportlab.platypus import SimpleDocTemplate, Table, TableStyle
@@ -7,12 +9,14 @@ from utils import software_updates
 from utils import filesystems_integrity
 from utils import bootloader_settings
 from utils import unused_filesystems
+load_dotenv()
 
-# Database connection details
-DB_HOST = "localhost"
-DB_NAME = "CIS_BENCHMARKING"
-DB_USER = "postgres"
-DB_PASSWORD = "praveen123"
+# Access the variables
+DB_HOST = os.getenv("DB_HOST")
+DB_NAME = os.getenv("DB_NAME")
+DB_USER = os.getenv("DB_USER")
+DB_PASSWORD = os.getenv("DB_PASSWORD")
+
 
 # Define PDF filename
 PDF_FILE = "cis_reports.pdf"
